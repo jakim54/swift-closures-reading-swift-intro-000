@@ -10,7 +10,7 @@
 
 
 
-# Closures
+# Functions as Types
 
 Functions are something we should be very familiar with at this point.
 
@@ -190,13 +190,144 @@ Lets create a new function called `subtract` I'm going to add in some `print()` 
 
 ```swift
 func subtract(a: Int, from b: Int) -> Int {
+    print("The subtract function was called. It was given the numbers \(a) and \(b)")
     return b - a
 }
 ```
 
+```swift
+func printMathResult(mathFunction: (Int, Int) -> Int, firstNumber: Int, secondNumber: Int) {
+    
+    print("The first number is \(firstNumber)")
+    print("The second number is \(secondNumber)")
+    
+    let result = mathFunction(5, 10)
+    
+    print("The result is equal to \(result)")
+    
+}
+```
+
+Lets now call on the `printMathResult` function like this:
+
+```swift
+printMathResult(subtract, firstNumber: 50, secondNumber: 80)
+
+// The first number is 50
+// The second number is 80
+// The subtract function was called. It was given the numbers 5 and 10
+// The result is equal to 5
+```
+
+I highly suggest stepping through this code, reading the print statements to get a sense at when things are getting called.
+
+Lets provide one more example:
+
+```swift
+func multiplyBy5ThenAdd(a: Int, _ b: Int) -> Int {
+    print("multiplyBy5ThenAdd called with \(a) and \(b)")
+    
+    let newA = a * 5
+    print("newA is \(newA)")
+    
+    let newB = b * 5
+    print("newB is \(newB)")
+    
+    return newA + newB
+}
+```
+
+```swift
+printMathResult(multiplyBy5ThenAdd, firstNumber: 32, secondNumber: 9)
+
+// The first number is 32
+// The second number is 9
+// multiplyBy5ThenAdd called with 5 and 10
+// newA is 25
+// newB is 50
+// The result is equal to 75
+```
+
+---
+
+# Functions as Return types
+
+We know functions are types now. So can they also be the return value of a function and not just the type of one of its arguments? Yes.
+
+We're creating a game, and you can step forward or step backward.
+
+```swift
+func stepForward(input: Int) -> Int {
+    
+    return input + 1
+    
+}
+
+func stepBackward(input: Int) -> Int {
+    
+    return input - 1
+    
+}
+```
+
+Both functions have a type of `(Int) -> Int`
+
+Lets create a function called `chooseStepFunction(_:)` that takes in an argument called `backwards` of type `Bool` and returns back a function of type `(Int) -> Int`. The function it returns should take in one `Int` as an argument and return an `Int`. That function signature is identical to the `stepForward(_:)` and `stepBackward(_:)` function we created earlier.
+
+We can implement this function by looking at the `backWards` argument. If its value is `true`, then we should return back the `stepBackward` function. If it's `false` then we should return back the `stepForward` function.
 
 
+```swift
+func chooseStepFunction(backwards: Bool) -> (Int) -> Int {
+    
+    if backwards {
+        return stepBackward
+    } else {
+        return stepForward
+    }
+    
+}
+```
 
+```swift
+let howWeShouldMove = chooseStepFunction(true)
+```
+
+What type do you think the `howWeShouldMove` constant is?
+
+Its type should what the return type is of the `chooseStepFunction` because that is what that function is returning back to us. The return type of `chooseStepFunction` is `(Int) -> Int`. 
+
+![](http://i.imgur.com/XzO8Lgk.png?1)
+
+So we have a constant that retains the value of a function that takes in an `Int` as an argument and returns an `Int`. How do we call on it?
+
+Well, we do so like we have every other time we call on a function.
+
+```swift
+let result = howWeShouldMove(5)
+// 4
+```
+
+We're calling on the `howWeShouldMove` function (it is a function) passing in an `Int` (the numeric literal 5) and storing what it returns (which is the number 4) in our `result` constant. `result` is an `Int` with the value of 4.
+
+Last thing we'll cover.
+
+```swift
+var someCoolFunction: (String, Double) -> Int
+```
+
+Should the following code run?
+```swift
+someCoolFunction("Test", 5)
+```
+
+The answer is no. But do you know why? Don't forget, functions are types just like `String`'s so they behave the same way. You're trying to use a variable here that doesn't have a value. 
+
+![](http://i.imgur.com/NY0LRJZ.png?1)
+
+No difference if we tried doing the same thing with a `String` variable.
+
+![](http://i.imgur.com/Yq52uIT.png?1)
 
 
 

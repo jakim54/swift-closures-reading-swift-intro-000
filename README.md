@@ -1,13 +1,8 @@
-# Closures
+# Functions as types
 
+![](http://i.imgur.com/UPUp11v.jpg?1)
 
-> I like turtles. 
- 
-
-## Learning Objectives
-
-* 
-
+> The function of education is to teach one to think intensively and to think critically. Intelligence plus character - that is the goal of true education. -[Martin Luther King Jr.](https://en.wikipedia.org/wiki/Martin_Luther_King_Jr.) 
 
 
 # Functions as Types

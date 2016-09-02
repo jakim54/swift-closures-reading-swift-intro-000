@@ -1,15 +1,24 @@
-# Functions as types
+# Functions as Types
 
 ![](http://i.imgur.com/UPUp11v.jpg?1)
 
 > The function of education is to teach one to think intensively and to think critically. Intelligence plus character - that is the goal of true education. -[Martin Luther King Jr.](https://en.wikipedia.org/wiki/Martin_Luther_King_Jr.) 
 
+## Overview
 
-# Functions as Types
+We'll look at how functions are an example of a data type. 
+
+## Learning Objectives
+
+* Describe the type of a function by its argument and its return type.
+* Create a function that takes in another function as an argument 
+* Create a function whose return value is a function 
+
+## Functions as Types
 
 Functions are something we should be very familiar with at this point.
 
-Lets create a function called `showSomeLove(_:)` that takes in one argument called `person` of type `String` and returns a `String`. It will return back the individuals name appending the "<3" text to it.
+Let's create a function called `showSomeLove(_:)` that takes in one argument called `person` of type `String` and returns a `String`. It will return back the individuals name appending the "<3" text to it.
 
 
 ```swift
@@ -18,7 +27,7 @@ func showSomeLove(person: String) -> String {
 }
 ```
 
-Lets create a new constant called `result` assigning it the value of the return value of calling on `showSomeLove(_:)` passing in "Ann". Printing this `result` will display the "Ann <3" text to console.
+Let's create a new constant called `result` assigning it the value of the return value of calling on `showSomeLove(_:)` passing in "Ann". Printing this `result` will display the "Ann <3" text to console.
 
 ```swift
 let result = showSomeLove("Ann")
@@ -30,7 +39,7 @@ This function is a type. Just like `String`, `Int`, `Double`, it's a type. You w
 
 So the type of this function is (`String`) -> `String`. We would say that it takes in a `String` and returns a `String`.
 
-Lets test out this new found knowledge.
+Let's test out this new found knowledge.
 
 ```swift
 func hello() {
@@ -54,7 +63,7 @@ The type of this function is (`Double`, `Double`, `Double`) -> `Double`
 
 It takes in three arguments all of type `Double` and returns a `Double`.
 
-Lets do one more.
+Let's do one more.
 
 ```swift
 func personStats(name name: String, age: Int) {
@@ -70,13 +79,13 @@ So now that we know functions are types and can be described as such listing the
 
 We know that `String` is a type, right? And we saw above how we can actually use `String` as the type of an argument so when someone calls on our `showSomeLove(_:)` function they're required to give us a `String` which we can utilize within the implementation of our `showSomeLove(_:)` function.
 
-Is there anything stopping us from having the type of a function (like the ones we created above) be the type of an argument of another function? YES. This is a very powerful concept, and one that is very useful.
+Is there anything stopping us from having the type of a function (like the ones we created above) be the type of an argument of another function? No! This is a very powerful concept, and one that is very useful.
 
 Lets start simple. We know the type of our `hello()` function above is () -> ()
 
 It takes in no arguments and returns nothing, so the type of the function is () -> ()
 
-Lets create another function that takes in the type () -> () as an argument
+Let's create another function that takes in the type () -> () as an argument
 
 ```swift
 func doSomethingWithFunction(function: () -> ()) {
@@ -87,7 +96,7 @@ func doSomethingWithFunction(function: () -> ()) {
 
 We just created a new function called `doSomethingWithFunction(_:)` that takes in on argument called `function` of type `() -> ()` and returns nothing. We are already familiar with how to co call on functions, so we can do so by calling on the function handed to us in our implemented like I did above.
 
-But how do we call on this function? Lets demonstrate that.
+But how do we call on this function? Let's demonstrate that.
 
 ```swift
 doSomethingWithFunction(hello)
@@ -112,7 +121,7 @@ It's the same reason why this piece of code doesn't work.
 
 You can't pass in a `String` as an argument to a function that is asking for an `Int`. When calling on a function,  if it's asking for you to provide arguments you have to give it what it wants.
 
-Lets step through one more example.
+Let's step through one more example.
 
 ```swift
 func printMathResult(mathFunction: (Int, Int) -> Int, firstNumber: Int, secondNumber: Int) {
@@ -132,9 +141,9 @@ The second argument is called `firstNumber` and it is of type `Int`. Easy enough
 
 The third and last argument is called `secondNumber` and it is of type `Int`.
 
-Lets implement this function now.
+Let's implement this function now.
 
-For now, lets just print our `firstNumber` and `secondNumber` argument.
+For now, let's just print our `firstNumber` and `secondNumber` argument.
 
 ```swift
 func printMathResult(mathFunction: (Int, Int) -> Int, firstNumber: Int, secondNumber: Int) {
@@ -147,9 +156,9 @@ func printMathResult(mathFunction: (Int, Int) -> Int, firstNumber: Int, secondNu
 
 We know we can do this, we've been doing this throughout the entire course. We know how we can work with the arguments passed into our functions.
 
-Lets though work with the `mathFunction` argument passed in. It itself is a function and we know how to call on functions.. so if we call on this function we have to give it what it wants. It wants two `Int`'s and! AND! when that particular function is done doing its thing (its implementation) it will return back to us an `Int`.
+Let's though work with the `mathFunction` argument passed in. It itself is a function and we know how to call on functions.. so if we call on this function we have to give it what it wants. It wants two `Int`'s and! AND! when that particular function is done doing its thing (its implementation) it will return back to us an `Int`.
 
-Actually, before we do that, lets look at this code.
+Actually, before we do that, let's look at this code.
 
 ```swift
 func add(a: Int, _ b: Int) -> Int {
@@ -181,7 +190,7 @@ Feel free to peace out of here for a bit, get your bearings and come back.
 
 Ok, welcome back.
 
-Lets create a new function called `subtract` I'm going to add in some `print()` statements to help us see when things are getting called.
+Let's create a new function called `subtract` I'm going to add in some `print()` statements to help us see when things are getting called.
 
 ```swift
 func subtract(a: Int, from b: Int) -> Int {
@@ -203,7 +212,7 @@ func printMathResult(mathFunction: (Int, Int) -> Int, firstNumber: Int, secondNu
 }
 ```
 
-Lets now call on the `printMathResult` function like this:
+Let's now call on the `printMathResult` function like this:
 
 ```swift
 printMathResult(subtract, firstNumber: 50, secondNumber: 80)
@@ -216,7 +225,7 @@ printMathResult(subtract, firstNumber: 50, secondNumber: 80)
 
 I highly suggest stepping through this code, reading the print statements to get a sense at when things are getting called.
 
-Lets provide one more example:
+Let's provide one more example:
 
 ```swift
 func multiplyBy5ThenAdd(a: Int, _ b: Int) -> Int {
@@ -245,7 +254,7 @@ printMathResult(multiplyBy5ThenAdd, firstNumber: 32, secondNumber: 9)
 
 ---
 
-# Functions as Return types
+## Functions as Return types
 
 We know functions are types now. So can they also be the return value of a function and not just the type of one of its arguments? Yes.
 

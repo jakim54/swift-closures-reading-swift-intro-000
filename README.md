@@ -182,7 +182,7 @@ func printMathResult(mathFunction: (Int, Int) -> Int, firstNumber: Int, secondNu
 }
 ```
 
-Now you might think... `result` is 15! here. But, we don't know yet. Whomever calls on this `printMathResult` function must provide us with a function and its _that_ function's implementation which dictates the value of `result`. Crazy, I know but very powerful! Let me look for a gif to put here (be right back).
+Now you might think... `result` is 15! here. But, we don't know yet. Whoever calls on this `printMathResult` function must provide us with a function and its _that_ function's implementation which dictates the value of `result`. Crazy, I know but very powerful! Let me look for a gif to put here (be right back).
 
 Feel free to peace out of here for a bit, get your bearings and come back.
 

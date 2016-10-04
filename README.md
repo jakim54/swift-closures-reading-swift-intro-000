@@ -18,24 +18,24 @@ We'll look at how functions are an example of a data type.
 
 Functions are something we should be very familiar with at this point.
 
-Let's create a function called `showSomeLove(_:)` that takes in one argument called `person` of type `String` and returns a `String`. It will return back the individuals name appending the "<3" text to it.
+Let's create a function called `showSomeLove(_:)` that takes in one argument called `person` of type `String` and returns a `String`. It will return back the individuals name appending the "❤️" text to it.
 
 
 ```swift
 func showSomeLove(person: String) -> String {
-    return "\(person) <3"
+    return "\(person) ❤️"
 }
 ```
 
-Let's create a new constant called `result` assigning it the value of the return value of calling on `showSomeLove(_:)` passing in "Ann". Printing this `result` will display the "Ann <3" text to console.
+Let's create a new constant called `result` assigning it the value of the return value of calling on `showSomeLove(_:)` passing in "Ann". Printing this `result` will display the "Ann ❤️" text to console.
 
 ```swift
 let result = showSomeLove("Ann")
 print(result)
-// prints "Ann <3"
+// prints "Ann ❤️"
 ```
 
-This function is a type. Just like `String`, `Int`, `Double`, it's a type. You would describe the type of this function by its argument and its return type.
+This function is a type. Just like `String`, `Int`, `Double`, it is a type. You would describe the type of this function by its argument and its return type.
 
 So the type of this function is (`String`) -> `String`. We would say that it takes in a `String` and returns a `String`.
 
@@ -205,7 +205,7 @@ func printMathResult(mathFunction: (Int, Int) -> Int, firstNumber: Int, secondNu
     print("The first number is \(firstNumber)")
     print("The second number is \(secondNumber)")
     
-    let result = mathFunction(5, 10)
+    let result = mathFunction(firstNumber, secondNumber)
     
     print("The result is equal to \(result)")
     
@@ -219,8 +219,8 @@ printMathResult(subtract, firstNumber: 50, secondNumber: 80)
 
 // The first number is 50
 // The second number is 80
-// The subtract function was called. It was given the numbers 5 and 10
-// The result is equal to 5
+// The subtract function was called. It was given the numbers 50 and 80
+// The result is equal to 30
 ```
 
 I highly suggest stepping through this code, reading the print statements to get a sense at when things are getting called.
@@ -242,14 +242,14 @@ func multiplyBy5ThenAdd(a: Int, _ b: Int) -> Int {
 ```
 
 ```swift
-printMathResult(multiplyBy5ThenAdd, firstNumber: 32, secondNumber: 9)
+printMathResult(multiplyBy5ThenAdd, firstNumber: 3, secondNumber: 9)
 
-// The first number is 32
+// The first number is 3
 // The second number is 9
-// multiplyBy5ThenAdd called with 5 and 10
-// newA is 25
-// newB is 50
-// The result is equal to 75
+// multiplyBy5ThenAdd called with 3 and 9
+// newA is 15
+// newB is 45
+// The result is equal to 60
 ```
 
 ---
